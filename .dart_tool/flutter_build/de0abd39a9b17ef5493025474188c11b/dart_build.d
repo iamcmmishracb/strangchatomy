@@ -1,0 +1,1 @@
+ C:\\Projects\\strangchatomy\\.dart_tool\\flutter_build\\de0abd39a9b17ef5493025474188c11b\\dart_build_result.json:  C:\\Projects\\strangchatomy\\.dart_tool\\package_config.json C:\\Projects\\strangchatomy\\pubspec.yaml C:\\flutter\\bin\\cache\\dart-sdk\\version c:\\projects\\strangchatomy\\.dart_tool\\package_config.json

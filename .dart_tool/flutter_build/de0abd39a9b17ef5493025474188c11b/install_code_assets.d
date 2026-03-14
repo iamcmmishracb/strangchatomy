@@ -1,0 +1,1 @@
+ C:\\Projects\\strangchatomy\\.dart_tool\\flutter_build\\de0abd39a9b17ef5493025474188c11b\\native_assets.json: 

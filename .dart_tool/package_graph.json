@@ -1,10 +1,10 @@
 {
   "roots": [
-    "randomchat"
+    "strangchatomy"
   ],
   "packages": [
     {
-      "name": "randomchat",
+      "name": "strangchatomy",
       "version": "1.0.0+1",
       "dependencies": [
         "cached_network_image",
