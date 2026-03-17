@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../../core/routes/app_router.dart';
 import '../../../core/utils/app_utils.dart';
+import '../../../core/services/ad_service.dart';
 
 class PostChatScreen extends StatefulWidget {
   final Map<String, dynamic>? sessionData;
@@ -22,6 +23,10 @@ class _PostChatScreenState extends State<PostChatScreen> with SingleTickerProvid
     _animController = AnimationController(vsync: this, duration: const Duration(milliseconds: 600));
     _scaleAnim = CurvedAnimation(parent: _animController, curve: Curves.elasticOut);
     _animController.forward();
+    // Show interstitial ad when chat ends
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      AdService().showInterstitial();
+    });
   }
 
   @override
@@ -88,6 +93,9 @@ class _PostChatScreenState extends State<PostChatScreen> with SingleTickerProvid
                 ),
                 const SizedBox(height: 12),
                 TextButton(onPressed: () => context.go(AppRoutes.home), child: const Text('Go Home')),
+                const SizedBox(height: 16),
+                const AdBannerWidget(),
+                const SizedBox(height: 8),
               ],
             ),
           ),

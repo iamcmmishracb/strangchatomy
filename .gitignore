@@ -1,1 +1,4 @@
 build/
+.dart_tool/
+android/key.properties
+android/app/google-services.json

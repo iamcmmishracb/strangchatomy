@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../../core/services/session_service.dart';
 import '../../../core/routes/app_router.dart';
+import '../../../core/services/ad_service.dart';
 
 class MatchingScreen extends StatefulWidget {
   const MatchingScreen({super.key});
@@ -50,6 +51,9 @@ class _MatchingScreenState extends State<MatchingScreen> with TickerProviderStat
     });
 
     _startMatching();
+    // Preload ads
+    AdService().loadRewarded();
+    AdService().loadInterstitial();
   }
 
   Future<void> _startMatching() async {
@@ -199,9 +203,26 @@ class _MatchingScreenState extends State<MatchingScreen> with TickerProviderStat
                 const Spacer(),
 
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 32),
+                  padding: const EdgeInsets.only(bottom: 8),
                   child: Text('100% anonymous · No account needed', style: Theme.of(context).textTheme.bodySmall?.copyWith(color: AppColors.textMuted)),
                 ),
+                // Rewarded ad — skip wait button
+                if (_searching && AdService().isRewardedReady)
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 8),
+                    child: TextButton.icon(
+                      onPressed: () {
+                        AdService().showRewarded(
+                          onRewarded: (_) {},
+                          onDismissed: () {},
+                        );
+                      },
+                      icon: const Icon(Icons.play_circle_outline_rounded, size: 16, color: AppColors.primary),
+                      label: const Text('Watch ad to support us', style: TextStyle(color: AppColors.primary, fontSize: 12)),
+                    ),
+                  ),
+                const AdBannerWidget(),
+                const SizedBox(height: 8),
               ],
             ),
           ),

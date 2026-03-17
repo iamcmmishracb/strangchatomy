@@ -36,10 +36,10 @@ class AppConfig {
     ),
     'production': AppEnvironment(
       name: 'Production',
-      apiUrl: 'https://api.strangchatomy.app',
-      wsUrl: 'wss://ws.strangchatomy.app',
+      apiUrl: 'https://strangchatomy.online',
+      wsUrl: 'wss://strangchatomy.online/ws',
       debugLogging: false,
-      enableBotFallback: false,
+      enableBotFallback: true,
     ),
     'custom': AppEnvironment(
       name: 'Custom Server',
@@ -50,7 +50,7 @@ class AppConfig {
     ),
   };
 
-  static const String ACTIVE_ENV = 'development';
+  static const String ACTIVE_ENV = 'production';
 
   static AppEnvironment get current {
     final env = environments[ACTIVE_ENV];

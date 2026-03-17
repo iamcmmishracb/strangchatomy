@@ -5,6 +5,7 @@ import '../../../core/theme/app_theme.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../../core/providers/theme_provider.dart';
 import '../../../core/routes/app_router.dart';
+import '../../../core/services/ad_service.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -484,6 +485,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
           const SizedBox(height: 32),
           Center(child: Text('Strangchatomy v1.0.0', style: Theme.of(context).textTheme.bodySmall?.copyWith(color: AppColors.textMuted))),
+          const SizedBox(height: 16),
+          const Center(child: AdBannerWidget()),
           const SizedBox(height: 24),
         ],
       ),

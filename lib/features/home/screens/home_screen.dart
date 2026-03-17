@@ -12,6 +12,7 @@ import '../../../core/utils/app_utils.dart';
 import '../../../core/routes/app_router.dart';
 import '../../../core/providers/theme_provider.dart';
 import '../../info/screens/about_screen.dart';
+import '../../../core/services/ad_service.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -227,6 +228,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
                         const SizedBox(height: 10),
                         TextButton(onPressed: () => context.go(AppRoutes.dashboard), child: const Text('Profile & Settings')),
+                        const SizedBox(height: 8),
+                        const AdBannerWidget(),
+                        const SizedBox(height: 8),
                       ],
                     ),
                   ),

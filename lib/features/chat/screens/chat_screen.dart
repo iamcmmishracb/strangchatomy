@@ -11,6 +11,7 @@ import '../../../core/utils/app_utils.dart';
 import '../../../core/routes/app_router.dart';
 import '../widgets/message_bubble.dart';
 import '../widgets/chat_input_bar.dart';
+import '../../../core/services/ad_service.dart';
 
 // ── Report reason mapping ─────────────────────────────────────────────────────
 // UI label  →  backend enum value (must match routes/sessions.js validReasons)
@@ -447,6 +448,15 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                 .sentAt
                 .difference(_messages[i - 1].sentAt)
                 .inMinutes > 5;
+        // Show native ad card every 8 messages
+        if (i > 0 && i % 8 == 0) {
+          return Column(
+            children: [
+              const NativeAdCard(),
+              MessageBubble(message: msg, showTimestamp: showTimestamp),
+            ],
+          );
+        }
         return MessageBubble(message: msg, showTimestamp: showTimestamp);
       },
     );
